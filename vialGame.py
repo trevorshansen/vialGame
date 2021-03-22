@@ -20,6 +20,9 @@ class vialGame:
 		return self.vials
 
 	def printGame(self):
-		for i in vials:
+		for i in self.vials:
 			print(i)
+
+	def move(self, fromVial, toVial):
+		return
 	# Need 4 units of each color randomized between numColors # of vials
