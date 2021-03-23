@@ -2,10 +2,13 @@ import numpy as np
 from random import shuffle
 class vialGame:
 
-	def __init__(self, numColors):
+	def __init__(self, numColors=5, isTest=False):
+
 		self.numColors = numColors
+		if(isTest):
+			self.vials = self.testGame()
 		self.vials = self.randomGame()
-		printGame()
+		self.printGame()
 
 	# This will create a random new game
 	def randomGame(self):
@@ -21,6 +24,18 @@ class vialGame:
 
 		return self.vials
 
+	# Want to read this in from file
+	def testGame(self):
+		self.vials = []
+		self.vials.append([5, 4, 1, 1])
+		self.vials.append([3, 5, 1, 2])
+		self.vials.append([5, 2, 4, 1])
+		self.vials.append([5, 4, 3, 3])
+		self.vials.append([2, 4, 3, 2])
+		self.vials.append([])
+		self.vials.append([])
+
+	# Want to display this vertically
 	def printGame(self):
 		print("      top<-------->bottom")
 		for i in range(len(self.vials)):
@@ -42,7 +57,7 @@ class vialGame:
 		# Check if the vials have the same top color
 		if(self.vials[toVial - 1][0] == self.vials[fromVial - 1][0]):
 			# This doesn't work when emptying a vial
-			while(self.vials[toVial - 1][0] == self.vials[fromVial - 1][0]):
+			while(len(self.vials[fromVial - 1]) != 0 and self.vials[toVial - 1][0] == self.vials[fromVial - 1][0]):
 				self.vials[toVial - 1].insert(0, self.vials[fromVial - 1].pop(0))
-		printGame()
+		self.printGame()
 		return
