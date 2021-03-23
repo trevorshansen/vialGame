@@ -31,5 +31,6 @@ class vialGame:
 		if(len(self.vials[fromVial - 1]) == 0):
 			print("That vial is empty, please pick a filled vial to move from")
 			return
+		# Check if the vials have the same top color
 		# if(self.vials[toVial - 1][0] == self.vials[fromVial - 1][0]):
 		# 	self.vials[toVial - 1].insert(0, self.vials[fromVial - 1].pop(0))
