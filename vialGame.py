@@ -39,15 +39,20 @@ class vialGame:
 		for i in range(len(self.vials)):
 			print("Vial " + str(i + 1) + ": " + str(self.vials[i]))
 
-	def getInputFromCLI():
-		try:
-			fromVial, toVial = input("Please enter the fromVial then the toVial: ").split()
-		except Exception as e:
-			raise e
+	def getInputFromCLI(self):
+		fromVial = toVial = None
+		while(fromVial == toVial == None):
+			try:
+				fromVial, toVial = input("Please enter the fromVial then the toVial: ").split()
+				fromVial = int(fromVial)
+				toVial = int(toVial)
+			except (ValueError, TypeError):
+				print("Please enter two numbers with a space between them")
+				fromVial = toVial = None
 		return fromVial, toVial
 
 	def move(self, fromVial, toVial):
-		if(0 > fromVial > self.numColors + 2 or 0 > toVial > self.numColors + 2):
+		if(0 >= fromVial > self.numColors + 2 or 0 >= toVial > self.numColors + 2):
 			print("Please enter a number between 1 and " + str(self.numColors + 2))
 		if(len(self.vials[toVial - 1]) == 4):
 			print("That vial is full, please pick a vial with space to move too")
@@ -79,7 +84,7 @@ class vialGame:
 game = vialGame()
 while(game.checkWin() != True):
 	game.printGame()
-	fromVial, toVial = getInputFromCLI()
-	game.move(int(fromVial), int(toVial))
+	fromVial, toVial = game.getInputFromCLI()
+	game.move(fromVial, toVial)
 game.printGame()
 print("Great job, you won!")
