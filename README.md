@@ -13,4 +13,5 @@
 
 * Build app with decent UI
 	* Webpage works too
+	* Use Unity2D for graphics?
 * Get a neural network to solve the game
