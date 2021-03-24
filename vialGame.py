@@ -3,12 +3,10 @@ from random import shuffle
 class vialGame:
 
 	def __init__(self, numColors=5, isTest=False):
-
 		self.numColors = numColors
 		if(isTest):
 			self.vials = self.testGame()
 		self.vials = self.randomGame()
-		self.printGame()
 
 	# This will create a random new game
 	def randomGame(self):
@@ -56,8 +54,25 @@ class vialGame:
 			self.vials[toVial - 1].append(self.vials[fromVial - 1].pop(0))
 		# Check if the vials have the same top color
 		if(self.vials[toVial - 1][0] == self.vials[fromVial - 1][0]):
-			# This doesn't work when emptying a vial
 			while(len(self.vials[fromVial - 1]) != 0 and self.vials[toVial - 1][0] == self.vials[fromVial - 1][0]):
 				self.vials[toVial - 1].insert(0, self.vials[fromVial - 1].pop(0))
-		self.printGame()
 		return
+
+	def checkWin(self):
+		for i in self.vials:
+			if(len(i) == 0 or (len(i) == 4 and all(x == i[0] for x in i))):
+				continue
+			else:
+				return False
+		return True
+
+	# Undo last move - need a stack to save the game states
+	# def undoLastMove(self):
+
+game = vialGame()
+while(game.checkWin() != True):
+	game.printGame()
+	fromVial, toVial = input("Please enter the fromVial then the toVial: ").split()
+	game.move(int(fromVial), int(toVial))
+game.printGame()
+print("Great job, you won!")
