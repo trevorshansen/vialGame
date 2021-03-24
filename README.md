@@ -4,7 +4,7 @@
 
 * Undo last move method
 	* Need stack to save game states
-* Input validation so game won't crash with bad input
+* ~Input validation so game won't crash with bad input~
 * Read test game states from file 
 * Print the vials vertically
 * Clean up code to make it more readable
