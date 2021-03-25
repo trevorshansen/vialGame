@@ -1,5 +1,6 @@
 import numpy as np 
 from random import shuffle
+from copy import deepcopy
 
 class Error(Exception):
 		pass
@@ -72,7 +73,7 @@ class vialGame:
 			return
 
 		# Save the last move
-		self.gameHistory.insert(0, self.vials)
+		self.gameHistory.insert(0, deepcopy(self.vials))
 
 		# If the toVial is empty
 		if(len(self.vials[toVial - 1]) == 0):
