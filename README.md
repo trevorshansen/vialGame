@@ -3,7 +3,7 @@
 ## To-do
 
 * Read test game states from file 
-	* # Only space, then use split? Newline may be problem
+	* Only space, then use split? Newline may be problem
 * Print the vials vertically
 * Clean up code to make it more readable
 * ~Undo last move method~
