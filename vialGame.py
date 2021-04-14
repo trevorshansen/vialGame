@@ -99,10 +99,12 @@ class vialGame:
 		else:
 			self.vials = self.gameHistory.pop(0)
 
-# game = vialGame()
-# while(game.checkWin() != True):
-# 	game.printGame()
-# 	fromVial, toVial = game.getInputFromCLI()
-# 	game.move(fromVial, toVial)
-# game.printGame()
-# print("Great job, you won!")
+
+if __name__ == '__main__':
+	game = vialGame()
+	while(game.checkWin() != True):
+		game.printGame()
+		fromVial, toVial = game.getInputFromCLI()
+		game.move(fromVial, toVial)
+	game.printGame()
+	print("Great job, you won!")
