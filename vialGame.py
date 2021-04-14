@@ -99,8 +99,7 @@ class vialGame:
 		else:
 			self.vials = self.gameHistory.pop(0)
 
-
-if __name__ == '__main__':
+def main():
 	game = vialGame()
 	while(game.checkWin() != True):
 		game.printGame()
@@ -108,3 +107,6 @@ if __name__ == '__main__':
 		game.move(fromVial, toVial)
 	game.printGame()
 	print("Great job, you won!")
+
+if __name__ == '__main__':
+	main()
